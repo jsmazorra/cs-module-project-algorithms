@@ -2,10 +2,22 @@
 Input: an integer
 Returns: an integer
 '''
-def eating_cookies(n):
+def eating_cookies(n, cache=0):
     # Your code here
+    # It's like the Fibonacci sequence, but summing the previous three elements
+    # instead of the previous two.
+    if n > 2:
+        ancestors = [1, 1, 2]
+        for _ in range(n - 2):
+            ancestors.append(sum(ancestors))
+            ancestors.pop(0)
+        return ancestors[2]
 
-    pass
+    # Base cases, n <= 2.
+    if n == 2:
+        return 2
+    return 1
+
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
