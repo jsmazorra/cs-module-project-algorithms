@@ -5,7 +5,17 @@ Returns: an integer
 def single_number(arr):
     # Your code here
 
-    pass
+    singletons = set()
+
+    for num in arr:
+        if num in singletons:
+            # An even occurrence of a previously encountered number.
+            singletons.remove(num)
+        else:
+            # An odd occurence of a number in the array.
+            singletons.add(num)
+        
+    return singletons.pop()
 
 
 if __name__ == '__main__':
