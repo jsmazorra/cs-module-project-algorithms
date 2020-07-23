@@ -4,8 +4,23 @@ Returns: a List of integers
 '''
 def moving_zeroes(arr):
     # Your code here
+    start = 0
+    end = len(arr) - 1
 
-    pass
+    # Leave any initial trailing zeros in place.
+    while end > start and arr[end] == 0:
+        end -= 1
+
+    # Swap non-trailing zeros, if any, with the last non-zero number.
+    while start < end:
+        if arr[start] == 0:
+            arr[start], arr[end] = arr[end], arr[start]
+            start += 1
+            end -= 1
+        else:
+            start += 1
+
+    return arr
 
 
 if __name__ == '__main__':

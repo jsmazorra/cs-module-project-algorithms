@@ -4,8 +4,31 @@ Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
     # Your code here
+    product = 1
+    zeros = arr.count(0)
 
-    pass
+    if zeros <= 1:
+        # One or fewer zeros mean at least one non-zero product to calculate.
+        for num in arr:
+            if num != 0:
+                product *= num
+    else:
+        # Multiple zeros mean all partial products will be zero.
+        for index in range(len(arr)):
+            arr[index] = 0
+            return arr
+    
+    for index, num in enumerate(arr):
+        # Fill in partial products.
+        if num != 0:
+            if zeros == 1:
+                arr[index] = 0
+            else:
+                arr[index] = product / num
+        else:
+            arr[index] = product
+    
+    return arr
 
 
 if __name__ == '__main__':
